@@ -1,0 +1,15 @@
+<!-- This template is an extend of the general template -->
+{% extends 'base_layout.html' %}
+
+<!-- create an article object -->
+{% block content %}
+<div class="article-create">
+    <h2>Create a new article</h2>
+    <form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-date">
+        {% csrf_token %} <!-- for security -->
+        {{ form }}
+        <input type="submit" name="" value="Create">
+    </form>
+</div>
+<<script src="/static/slugify.js"></script>
+{% endblock %}

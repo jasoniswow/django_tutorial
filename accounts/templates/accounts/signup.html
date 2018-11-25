@@ -1,0 +1,11 @@
+<!-- This template is an extend of the general template -->
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h1>Sign Up Page</h1>
+    <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="" value="Signup">
+    </form>
+{% endblock %}

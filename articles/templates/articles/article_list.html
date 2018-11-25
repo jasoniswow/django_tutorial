@@ -1,0 +1,21 @@
+<!-- This template is an extend of the general template -->
+{% extends 'base_layout.html' %}
+
+<!-- view of article webpage -->
+{% block content %}
+    <head>
+        This is Jason's blog.
+    </head>
+    <h1>A full list of blogs</h1>
+    <div class="articles">
+        {% for article in articles %} <!-- Loop over objects -->
+            <div class="article">
+                <!-- each title is a link to a url called "articles:detail" -->
+                <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+                <p>{{article.snippet}}</p>
+                <p>{{article.date}}</p>
+                <p class="author">Added by {{ article.author.username }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Articles</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+        <header class="wrapper">
+            <!-- a logo that links to a url called "articles:list" -->
+            <h1><a href="{% url 'home' %}"><img src="{% static 'logo.jpg' %}" /></a></h1>
+            <!-- check if user is logged in -->
+            <nav>
+                <ul>
+                    <!-- show logout and create button if logged in -->
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="">Logout</button>
+                        </form>
+                    </li>
+                    <li><a href="{% url 'articles:create' %}" class="highlight">New Article</a></li>
+                    <!-- show login and signup button if logged out -->
+                    {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

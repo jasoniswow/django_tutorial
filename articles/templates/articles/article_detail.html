@@ -1,0 +1,14 @@
+<!-- This template is an extend of the general template -->
+{% extends 'base_layout.html' %}
+
+<!-- show details of each article object -->
+{% block content %}
+<div class="article-detail">
+    <div class="article">
+        <img src="{{article.thumb.url}}" alt="">
+        <h2>{{article.title}}</h2>
+        <p>{{article.body}}</p>
+        <p>{{article.date}}</p>
+    </div>
+</div>
+{% endblock %}
